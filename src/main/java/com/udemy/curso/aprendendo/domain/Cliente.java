@@ -1,5 +1,6 @@
 package com.udemy.curso.aprendendo.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.udemy.curso.aprendendo.domain.enums.TipoCliente;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
@@ -20,6 +21,7 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
     private Integer tipo;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
