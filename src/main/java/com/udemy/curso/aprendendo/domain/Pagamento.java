@@ -1,5 +1,6 @@
 package com.udemy.curso.aprendendo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.udemy.curso.aprendendo.domain.enums.EstadoPagamento;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public abstract class Pagamento implements Serializable {
     private Integer id;
     private Integer estado;
 
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId

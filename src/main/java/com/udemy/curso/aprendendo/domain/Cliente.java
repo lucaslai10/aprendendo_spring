@@ -1,5 +1,6 @@
 package com.udemy.curso.aprendendo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.udemy.curso.aprendendo.domain.enums.TipoCliente;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -29,6 +30,7 @@ public class Cliente implements Serializable {
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 
