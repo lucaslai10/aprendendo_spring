@@ -1,6 +1,7 @@
 package com.udemy.curso.aprendendo.services;
 
 import com.udemy.curso.aprendendo.domain.Categoria;
+import com.udemy.curso.aprendendo.dto.CategoriaDTO;
 import com.udemy.curso.aprendendo.repositories.CategoriaRepository;
 import com.udemy.curso.aprendendo.services.exceptions.DataIntegrityException;
 import com.udemy.curso.aprendendo.services.exceptions.ObjectNotFoundException;
@@ -55,6 +56,10 @@ public class CategoriaService {
     public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
         PageRequest pageRequest = new PageRequest(page, linesPerPage, Sort.Direction.valueOf(direction), orderBy);
         return repo.findAll(pageRequest);
+    }
+
+    public Categoria fromDTO(CategoriaDTO objDto) {
+        return new Categoria(objDto.getId(), objDto.getNome());
     }
 
 }
